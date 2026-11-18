@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Brian James Sager, Computer Engineering student at FEU Institute of Technology, Philippines. Electronics and cybersecurity.">
+  <meta name="description" content="Brian James Sager, Computer Engineering student at FEU Institute of Technology, Philippines. Embedded systems, IoT, and cybersecurity.">
   <title>Brian James Sager | Computer Engineering Portfolio</title>
   <style>
     :root { --bg:#ffffff; --fg:#1a1a1a; --muted:#5b6270; --accent:#0b5fff; --accent2:#00b3a4; --card:#f4f6fa; --border:#e3e7ee; --tagfg:#ffffff; }
@@ -26,11 +26,15 @@
     .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin:16px 0; transition:transform .2s ease, box-shadow .2s ease; }
     .card:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.12); }
     .card h3 { margin:0 0 6px; }
+    .card ul { margin:8px 0; }
+    .card li { margin:4px 0; }
+    .stack { color:var(--muted); font-size:.88rem; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; margin:0 0 8px; }
     aside .card { padding:14px 16px; }
     aside .card h3 { font-size:1rem; }
     aside .card p { font-size:.88rem; margin:6px 0; }
     .poster { width:100%; height:auto; border-radius:8px; margin-top:8px; display:block; }
     .tags span { display:inline-block; background:var(--accent); color:var(--tagfg); border-radius:999px; padding:2px 12px; font-size:.78rem; font-weight:600; margin:4px 6px 4px 0; }
+    .meta { color:var(--muted); font-size:.9rem; }
     ul { padding-left:20px; }
     footer { margin-top:4rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:.85rem; }
     @media (max-width:820px) {
@@ -42,9 +46,9 @@
   <header>
     <h1>Brian James Sager</h1>
     <p class="tagline">4th year Computer Engineering student at FEU Institute of Technology, Philippines</p>
-    <p>I build embedded and IoT systems and I am growing my skills in cybersecurity. I am looking for an internship where I can apply both.</p>
+    <p>I build embedded and IoT systems with machine learning on the edge, and I am growing my skills in cybersecurity and networking. I am looking for an internship where I can apply both.</p>
     <p>
-      <a href="mailto:sagerbrian21@gmail.com">Email</a>
+      <a href="mailto:brianjames.sager@gmail.com">Email</a>
       <a href="https://github.com/briansager">GitHub</a>
       <a href="https://www.linkedin.com/in/brianjamessager/">LinkedIn</a>
     </p>
@@ -56,15 +60,40 @@
         <h2>Projects</h2>
 
         <div class="card">
-          <h3>VERDE (Thesis)</h3>
-          <p>Vegetation Environment Recognition and Detection Engine. An IoT hydroponics monitoring and control system for lettuce.</p>
-          <div class="tags"><span>IoT</span><span>Embedded</span><span>Hydroponics</span></div>
+          <h3>VERDE: IoT Hydroponics System with Sensor-Vision Fusion (Thesis)</h3>
+          <p class="stack">Python, scikit-learn, YOLOv8, OpenCV, Raspberry Pi 5, ADS1115, GSM Module, Tailscale</p>
+          <ul>
+            <li>Led a 4-member thesis team to deliver a working hydroponics prototype with sensor-vision fusion (20/20 combinations verified, 4.9 s max response vs. a ≤ 5 s target).</li>
+            <li>Trained YOLOv8 (2,200 images, 96.67% mAP@0.5) and a Random Forest classifier (~5,000 sensor readings, 100% 5-fold CV), deployed on a Raspberry Pi 5.</li>
+            <li>Built and wired the full hardware system (sensors, camera, ADS1115, relay-controlled pumps) with soldering and circuit testing, installed Raspberry Pi OS, and taught groupmates Pi 5 remote access.</li>
+          </ul>
+          <div class="tags"><span>IoT</span><span>Embedded</span><span>YOLOv8</span><span>Random Forest</span><span>Raspberry Pi 5</span></div>
         </div>
 
         <div class="card">
-          <h3>Index 0 Student Services Map (Capstone)</h3>
-          <p>A web map of student services built as a group project.</p>
+          <h3>Closed-Loop Water Quality Control System for RO Units (pH and TDS)</h3>
+          <p class="stack">Arduino Uno, C++, pH and TDS Sensors, I2C LCD, Relay Control, Soldering</p>
+          <ul>
+            <li>Built and soldered the hardware for a working Arduino system that monitors pH and TDS and automatically runs RO or alkaline filtration until water is within safe limits.</li>
+            <li>Reviewed the Arduino code against the project’s 7 objectives (threshold checks, relay control, recirculation) and designed the containers and materials.</li>
+          </ul>
+          <div class="tags"><span>Arduino</span><span>C++</span><span>Sensors</span><span>Hardware</span></div>
+        </div>
+
+        <div class="card">
+          <h3>Index 0 Student Services Map: Web-Based Student Services Map (Capstone)</h3>
+          <p class="stack">React, Flask (Python), PostgreSQL, Leaflet, Git, GitHub, Flowcharting, Manual QA Testing</p>
+          <ul>
+            <li>Co-developed a web-based student services map, organizing the SQL tables and planning features through a system flowchart.</li>
+            <li>Ran manual QA testing against the project objectives and delivered the full demo.</li>
+          </ul>
           <div class="tags"><span>React</span><span>Flask</span><span>PostgreSQL</span><span>Leaflet</span></div>
+        </div>
+
+        <div class="card">
+          <h3>Student-Centered App</h3>
+          <p>Database design project covering schema design, normalization, and a Flask backend.</p>
+          <div class="tags"><span>Flask</span><span>SQL</span><span>Database Design</span></div>
         </div>
 
         <div class="card">
@@ -73,27 +102,58 @@
           <div class="tags"><span>Wix</span><span>Web Design</span><span>Fan Project</span></div>
           <a href="https://sagerbrian21.wixsite.com/sans" target="_blank" rel="noopener">Visit site</a>
         </div>
-
-        <div class="card">
-          <h3>Student-Centered App</h3>
-          <p>Database design project covering schema design, normalization, and a Flask backend.</p>
-          <div class="tags"><span>Flask</span><span>SQL</span><span>Database Design</span></div>
-        </div>
       </section>
 
       <section>
         <h2>Skills</h2>
         <ul>
-          <li><strong>Electronics and IoT:</strong> sensors, microcontrollers, system monitoring and control</li>
-          <li><strong>Web:</strong> React, Flask, HTML/CSS</li>
-          <li><strong>Data:</strong> PostgreSQL, schema design, normalization</li>
-          <li><strong>Interests:</strong> cybersecurity, embedded systems</li>
+          <li><strong>Languages:</strong> Python, Java, JavaScript, C++, HTML, CSS, HDL, Assembly</li>
+          <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Git, GitHub, Quartus, AutoCAD</li>
+          <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
+          <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
+          <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
         </ul>
       </section>
 
       <section>
         <h2>Education</h2>
-        <p><strong>BS Computer Engineering</strong>, FEU Institute of Technology, Philippines<br>Expected graduation: 2027</p>
+        <div class="card">
+          <h3>BS Computer Engineering</h3>
+          <p>FEU Institute of Technology, Philippines<br><span class="meta">Expected graduation: September 2027</span></p>
+          <ul>
+            <li>Financial Academic Scholarship (75% tuition)</li>
+            <li>3rd Year GPA: 3.72/4.00, ranked 3rd in the program (2025-2026)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Awards and Certifications</h2>
+        <ul>
+          <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
+          <li><strong>Cisco:</strong> Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation; CCST Networking</li>
+          <li><strong>AWS Academy Graduate:</strong> Cloud Foundations</li>
+          <li><strong>IT Specialist:</strong> Python, Java</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Seminars</h2>
+        <ul>
+          <li><strong>AI in Network Security:</strong> Organizer, May 2026</li>
+          <li><strong>Automation Mindset: Think Like an Efficiency Engineer:</strong> Participant, May 2026</li>
+          <li><strong>OpenAI Campus Launch: Early Prompt Engineering:</strong> Attendee, Jun 2026</li>
+          <li><strong>CODEX for Technical Users (AI Campus Launch):</strong> Attendee, Jun 2026</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Organizations</h2>
+        <div class="card">
+          <h3>Computer Engineering Organization</h3>
+          <p>FEU Institute of Technology<br><span class="meta">Member, Sep 2023 to present</span></p>
+          <p>Take part in organization events and activities, including the CpEO: Pioneers of Progress seminar (2025).</p>
+        </div>
       </section>
     </main>
 
