@@ -6,17 +6,18 @@
   <meta name="description" content="Brian James Sager, Computer Engineering student at FEU Institute of Technology, Philippines. Embedded systems, IoT, and cybersecurity.">
   <title>Brian James Sager | Computer Engineering Portfolio</title>
   <style>
-    :root { --bg:#ffffff; --fg:#1a1a1a; --muted:#5b6270; --accent:#0b5fff; --accent2:#00b3a4; --card:#f4f6fa; --border:#e3e7ee; --tagfg:#ffffff; }
+    :root { --bg:#ffffff; --fg:#1a1a1a; --muted:#5b6270; --accent:#0b5fff; --accent2:#00b3a4; --card:#f4f6fa; --border:#e3e7ee; --tagfg:#ffffff; --grid:rgba(11,95,255,.07); }
     :root { color-scheme:light; }
     @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) { color-scheme:dark; --bg:#0b0d12; --fg:#eaeaea; --muted:#a0a7b4; --accent:#6ea8ff; --accent2:#4fd1c5; --card:#151922; --border:#262c38; --tagfg:#0b0d12; }
+      :root:not([data-theme="light"]) { color-scheme:dark; --bg:#0b0d12; --fg:#eaeaea; --muted:#a0a7b4; --accent:#6ea8ff; --accent2:#4fd1c5; --card:#151922; --border:#262c38; --tagfg:#0b0d12; --grid:rgba(110,168,255,.07); }
     }
-    :root[data-theme="dark"] { color-scheme:dark; --bg:#0b0d12; --fg:#eaeaea; --muted:#a0a7b4; --accent:#6ea8ff; --accent2:#4fd1c5; --card:#151922; --border:#262c38; --tagfg:#0b0d12; }
+    :root[data-theme="dark"] { color-scheme:dark; --bg:#0b0d12; --fg:#eaeaea; --muted:#a0a7b4; --accent:#6ea8ff; --accent2:#4fd1c5; --card:#151922; --border:#262c38; --tagfg:#0b0d12; --grid:rgba(110,168,255,.07); }
     #theme-toggle { position:fixed; top:14px; right:14px; z-index:900; display:flex; align-items:center; gap:6px; background:var(--card); color:var(--fg); border:1px solid var(--border); border-radius:999px; padding:6px 14px; font:inherit; font-size:.85rem; font-weight:600; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.15); transition:background .2s ease, transform .2s ease; }
     #theme-toggle:hover { transform:translateY(-1px); }
     #theme-toggle:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:40px 40px; -webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent 95%); mask-image:linear-gradient(to bottom,#000 30%,transparent 95%); }
     body { font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--fg); max-width:1100px; margin:0 auto; padding:56px 20px; line-height:1.65; }
     .hero { display:flex; align-items:center; gap:24px; }
     .avatar { flex:none; width:128px; height:128px; padding:4px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); }
