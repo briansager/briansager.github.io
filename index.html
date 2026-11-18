@@ -37,14 +37,32 @@
     .meta { color:var(--muted); font-size:.9rem; }
     ul { padding-left:20px; }
     footer { margin-top:4rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:.85rem; }
-    .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; margin:12px 0 4px; }
-    .gallery figure { margin:0; }
-    .gallery a { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden; aspect-ratio:4/3; background:var(--bg); }
+    .gallery { display:grid; gap:12px; margin:12px 0 4px; }
+    .gallery.g4 { grid-template-columns:repeat(4,1fr); }
+    .gallery.g2 { grid-template-columns:repeat(2,1fr); }
+    .gallery.g5 { grid-template-columns:repeat(5,1fr); }
+    .gallery figure { margin:0; min-width:0; }
+    .gallery a { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--bg); cursor:zoom-in; }
+    .gallery.g4 a { aspect-ratio:4/5; }
+    .gallery.g2 a { aspect-ratio:1.9/1; }
+    .gallery.g5 a { aspect-ratio:600/562; }
     .gallery img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
-    .gallery img.contain { object-fit:contain; }
     .gallery a:hover img { transform:scale(1.05); }
     .gallery figcaption { font-size:.75rem; color:var(--muted); margin-top:4px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
-    .gallery.wide { grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+    .thumbs a { cursor:zoom-in; }
+    #lightbox { position:fixed; inset:0; background:rgba(0,0,0,.88); display:none; align-items:center; justify-content:center; z-index:1000; padding:24px; cursor:zoom-out; }
+    #lightbox.open { display:flex; }
+    #lightbox img { max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 10px 40px rgba(0,0,0,.5); }
+    #lightbox button { position:absolute; background:rgba(255,255,255,.12); color:#fff; border:0; border-radius:999px; width:44px; height:44px; font-size:1.4rem; cursor:pointer; }
+    #lightbox button:hover { background:rgba(255,255,255,.25); }
+    #lb-close { top:16px; right:16px; }
+    #lb-prev { left:16px; top:50%; transform:translateY(-50%); }
+    #lb-next { right:16px; top:50%; transform:translateY(-50%); }
+    @media (max-width:700px) {
+      .gallery.g4 { grid-template-columns:repeat(2,1fr); }
+      .gallery.g2 { grid-template-columns:1fr; }
+      .gallery.g5 { grid-template-columns:repeat(3,1fr); }
+    }
     .sub { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:16px 0 0; font-weight:600; }
     details.design { margin-top:3.5rem; }
     details.design summary { cursor:pointer; font-size:1.1rem; font-weight:600; }
@@ -84,10 +102,10 @@
             <li>Built and wired the full hardware system (sensors, camera, ADS1115, relay-controlled pumps) with soldering and circuit testing, installed Raspberry Pi OS, and taught groupmates Pi 5 remote access.</li>
           </ul>
           <p class="sub">Hardware</p>
-          <div class="gallery"><figure><a href="images/verde-rack.jpg" target="_blank" rel="noopener"><img src="images/verde-rack.jpg" alt="VERDE Full rack" loading="lazy"></a><figcaption>Full rack</figcaption></figure><figure><a href="images/verde-pi-box.jpg" target="_blank" rel="noopener"><img src="images/verde-pi-box.jpg" alt="VERDE Pi 5 + GSM + relays" loading="lazy"></a><figcaption>Pi 5 + GSM + relays</figcaption></figure><figure><a href="images/verde-sensor-box.jpg" target="_blank" rel="noopener"><img src="images/verde-sensor-box.jpg" alt="VERDE Sensor box" loading="lazy"></a><figcaption>Sensor box</figcaption></figure><figure><a href="images/verde-relay-box.jpg" target="_blank" rel="noopener"><img src="images/verde-relay-box.jpg" alt="VERDE Pump + relay box" loading="lazy"></a><figcaption>Pump + relay box</figcaption></figure></div>
+          <div class="gallery g4"><figure><a href="images/verde-rack.jpg" data-lb><img src="images/verde-rack.jpg" alt="VERDE Full rack" loading="lazy"></a><figcaption>Full rack</figcaption></figure><figure><a href="images/verde-pi-box.jpg" data-lb><img src="images/verde-pi-box.jpg" alt="VERDE Pi 5 + GSM + relays" loading="lazy"></a><figcaption>Pi 5 + GSM + relays</figcaption></figure><figure><a href="images/verde-sensor-box.jpg" data-lb><img src="images/verde-sensor-box.jpg" alt="VERDE Sensor box" loading="lazy"></a><figcaption>Sensor box</figcaption></figure><figure><a href="images/verde-relay-box.jpg" data-lb><img src="images/verde-relay-box.jpg" alt="VERDE Pump + relay box" loading="lazy"></a><figcaption>Pump + relay box</figcaption></figure></div>
           <p class="sub">Web dashboard</p>
-          <div class="gallery wide"><figure><a href="images/verde-yolo.jpg" target="_blank" rel="noopener"><img src="images/verde-yolo.jpg" alt="VERDE YOLOv8 detection" class="contain" loading="lazy"></a><figcaption>YOLOv8 detection</figcaption></figure><figure><a href="images/verde-dashboard.jpg" target="_blank" rel="noopener"><img src="images/verde-dashboard.jpg" alt="VERDE Live readings + RF status" class="contain" loading="lazy"></a><figcaption>Live readings + RF status</figcaption></figure></div>
-          <div class="gallery"><figure><a href="images/verde-ph.jpg" target="_blank" rel="noopener"><img src="images/verde-ph.jpg" alt="VERDE pH trend" class="contain" loading="lazy"></a><figcaption>pH trend</figcaption></figure><figure><a href="images/verde-ec.jpg" target="_blank" rel="noopener"><img src="images/verde-ec.jpg" alt="VERDE EC trend" class="contain" loading="lazy"></a><figcaption>EC trend</figcaption></figure><figure><a href="images/verde-turbidity.jpg" target="_blank" rel="noopener"><img src="images/verde-turbidity.jpg" alt="VERDE Turbidity trend" class="contain" loading="lazy"></a><figcaption>Turbidity trend</figcaption></figure><figure><a href="images/verde-water-temp.jpg" target="_blank" rel="noopener"><img src="images/verde-water-temp.jpg" alt="VERDE Water temp trend" class="contain" loading="lazy"></a><figcaption>Water temp trend</figcaption></figure><figure><a href="images/verde-humidity.jpg" target="_blank" rel="noopener"><img src="images/verde-humidity.jpg" alt="VERDE Humidity trend" class="contain" loading="lazy"></a><figcaption>Humidity trend</figcaption></figure></div>
+          <div class="gallery g2"><figure><a href="images/verde-yolo.jpg" data-lb><img src="images/verde-yolo.jpg" alt="VERDE YOLOv8 detection" loading="lazy"></a><figcaption>YOLOv8 detection</figcaption></figure><figure><a href="images/verde-dashboard.jpg" data-lb><img src="images/verde-dashboard.jpg" alt="VERDE Live readings + RF status" loading="lazy"></a><figcaption>Live readings + RF status</figcaption></figure></div>
+          <div class="gallery g5"><figure><a href="images/verde-ph.jpg" data-lb><img src="images/verde-ph.jpg" alt="VERDE pH trend" loading="lazy"></a><figcaption>pH trend</figcaption></figure><figure><a href="images/verde-ec.jpg" data-lb><img src="images/verde-ec.jpg" alt="VERDE EC trend" loading="lazy"></a><figcaption>EC trend</figcaption></figure><figure><a href="images/verde-turbidity.jpg" data-lb><img src="images/verde-turbidity.jpg" alt="VERDE Turbidity trend" loading="lazy"></a><figcaption>Turbidity trend</figcaption></figure><figure><a href="images/verde-water-temp.jpg" data-lb><img src="images/verde-water-temp.jpg" alt="VERDE Water temp trend" loading="lazy"></a><figcaption>Water temp trend</figcaption></figure><figure><a href="images/verde-humidity.jpg" data-lb><img src="images/verde-humidity.jpg" alt="VERDE Humidity trend" loading="lazy"></a><figcaption>Humidity trend</figcaption></figure></div>
           <div class="tags"><span>IoT</span><span>Embedded</span><span>YOLOv8</span><span>Random Forest</span><span>Raspberry Pi 5</span></div>
         </div>
 
@@ -184,12 +202,40 @@
     <summary>Design Work (Canva)</summary>
     <p class="intro">STS group projects. I designed each one in Canva and compiled the content, with research input from my group.</p>
     <div class="thumbs">
-      <figure><a href="images/gmo-poster.jpg" target="_blank" rel="noopener"><img src="images/gmo-poster.jpg" alt="Poster on Bt corn and GMOs in the Philippines" loading="lazy"></a><figcaption>GMOs in the Philippines</figcaption></figure>
-      <figure><a href="images/bioprinting-poster.jpg" target="_blank" rel="noopener"><img src="images/bioprinting-poster.jpg" alt="Poster on bioprinting applications in bioengineering" loading="lazy"></a><figcaption>Bioprinting in Bioengineering</figcaption></figure>
-      <figure><a href="images/bioengineering-innovations.jpg" target="_blank" rel="noopener"><img src="images/bioengineering-innovations.jpg" alt="Infographic on bioengineering innovations in personalized health care" loading="lazy"></a><figcaption>Bioengineering Innovations</figcaption></figure>
+      <figure><a href="images/gmo-poster.jpg" data-lb><img src="images/gmo-poster.jpg" alt="Poster on Bt corn and GMOs in the Philippines" loading="lazy"></a><figcaption>GMOs in the Philippines</figcaption></figure>
+      <figure><a href="images/bioprinting-poster.jpg" data-lb><img src="images/bioprinting-poster.jpg" alt="Poster on bioprinting applications in bioengineering" loading="lazy"></a><figcaption>Bioprinting in Bioengineering</figcaption></figure>
+      <figure><a href="images/bioengineering-innovations.jpg" data-lb><img src="images/bioengineering-innovations.jpg" alt="Infographic on bioengineering innovations in personalized health care" loading="lazy"></a><figcaption>Bioengineering Innovations</figcaption></figure>
     </div>
   </details>
 
   <footer>&copy; 2026 Brian James Sager</footer>
+
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button id="lb-close" aria-label="Close">&times;</button>
+    <button id="lb-prev" aria-label="Previous">&lsaquo;</button>
+    <img id="lb-img" alt="">
+    <button id="lb-next" aria-label="Next">&rsaquo;</button>
+  </div>
+  <script>
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('a[data-lb]'));
+      var box = document.getElementById('lightbox'), img = document.getElementById('lb-img'), i = 0;
+      function show(n) {
+        i = (n + links.length) % links.length;
+        img.src = links[i].getAttribute('href');
+        img.alt = links[i].querySelector('img').alt;
+        box.classList.add('open');
+      }
+      function hide() { box.classList.remove('open'); img.src = ''; }
+      links.forEach(function (a, n) { a.addEventListener('click', function (e) { e.preventDefault(); show(n); }); });
+      box.addEventListener('click', function (e) { if (e.target.id === 'lb-prev') show(i - 1); else if (e.target.id === 'lb-next') show(i + 1); else hide(); });
+      document.addEventListener('keydown', function (e) {
+        if (!box.classList.contains('open')) return;
+        if (e.key === 'Escape') hide();
+        else if (e.key === 'ArrowLeft') show(i - 1);
+        else if (e.key === 'ArrowRight') show(i + 1);
+      });
+    })();
+  </script>
 </body>
 </html>
