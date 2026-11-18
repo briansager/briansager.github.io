@@ -67,6 +67,18 @@
     #lb-close { top:16px; right:16px; }
     #lb-prev { left:16px; top:50%; transform:translateY(-50%); }
     #lb-next { right:16px; top:50%; transform:translateY(-50%); }
+    .edu { display:flex; gap:20px; align-items:flex-start; }
+    .edu-text { flex:1; min-width:0; }
+    .award { margin:0; width:220px; flex:none; }
+    .award a { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden; cursor:zoom-in; background:#fff; }
+    .award img { width:100%; display:block; transition:transform .25s ease; }
+    .award a:hover img { transform:scale(1.04); }
+    .award figcaption { font-size:.75rem; color:var(--muted); margin-top:4px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .hover-link { position:relative; display:inline-block; }
+    .hover-link .preview { position:absolute; left:0; bottom:calc(100% + 10px); width:320px; max-width:80vw; padding:6px; background:var(--card); border:1px solid var(--border); border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,.28); opacity:0; visibility:hidden; transform:translateY(6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; pointer-events:none; z-index:50; }
+    .hover-link .preview img { width:100%; display:block; border-radius:8px; }
+    .hover-link:hover .preview, .hover-link:focus-within .preview { opacity:1; visibility:visible; transform:none; }
+    @media (max-width:700px) { .edu { flex-direction:column; } .award { width:100%; max-width:320px; } }
     @media (max-width:700px) {
       .gallery.g4 { grid-template-columns:repeat(2,1fr); }
       .gallery.g2 { grid-template-columns:1fr; }
@@ -107,6 +119,43 @@
 
   <div>
     <main>
+      <section>
+        <h2>Education</h2>
+        <div class="card edu">
+          <div class="edu-text">
+            <h3>BS Computer Engineering</h3>
+            <p>FEU Institute of Technology, Philippines<br><span class="meta">Expected graduation: September 2027</span></p>
+            <ul>
+              <li>Financial Academic Scholarship (75% tuition)</li>
+              <li>3rd Year GPA: 3.72/4.00, ranked 3rd in the program (2025-2026)</li>
+              <li>Top Performing Student, School Year 2025-2026 (Annual Students’ Recognition 2026)</li>
+            </ul>
+          </div>
+          <figure class="award"><a href="images/top-performing-student.jpg" data-lb><img src="images/top-performing-student.jpg" alt="Certificate of Recognition: Top Performing Student, School Year 2025-2026" loading="lazy"></a><figcaption>Certificate of Recognition</figcaption></figure>
+        </div>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <ul>
+          <li><strong>Languages:</strong> Python, Java, JavaScript, C++, HTML, CSS, HDL, Assembly</li>
+          <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Git, GitHub, Quartus, AutoCAD</li>
+          <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
+          <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
+          <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Awards and Certifications</h2>
+        <ul>
+          <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
+          <li><strong>Cisco:</strong> Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation; CCST Networking</li>
+          <li><strong>AWS Academy Graduate:</strong> Cloud Foundations</li>
+          <li><strong>IT Specialist:</strong> Python, Java</li>
+        </ul>
+      </section>
+
       <section>
         <h2>Projects</h2>
 
@@ -153,41 +202,8 @@
           <h3>Sans Fan Site (Wix)</h3>
           <p>A non-commercial fan-made website built in Wix. Designed the layout and page structure. All characters belong to their original creator, and this project is not affiliated with or endorsed by them.</p>
           <div class="tags"><span>Wix</span><span>Web Design</span><span>Fan Project</span></div>
-          <a href="https://sagerbrian21.wixsite.com/sans" target="_blank" rel="noopener">Visit site</a>
+          <span class="hover-link"><a href="https://sagerbrian21.wixsite.com/sans" target="_blank" rel="noopener">Visit site</a><span class="preview" aria-hidden="true"><img src="images/sans-preview.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span></span>
         </div>
-      </section>
-
-      <section>
-        <h2>Skills</h2>
-        <ul>
-          <li><strong>Languages:</strong> Python, Java, JavaScript, C++, HTML, CSS, HDL, Assembly</li>
-          <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Git, GitHub, Quartus, AutoCAD</li>
-          <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
-          <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
-          <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Education</h2>
-        <div class="card">
-          <h3>BS Computer Engineering</h3>
-          <p>FEU Institute of Technology, Philippines<br><span class="meta">Expected graduation: September 2027</span></p>
-          <ul>
-            <li>Financial Academic Scholarship (75% tuition)</li>
-            <li>3rd Year GPA: 3.72/4.00, ranked 3rd in the program (2025-2026)</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Awards and Certifications</h2>
-        <ul>
-          <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
-          <li><strong>Cisco:</strong> Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation; CCST Networking</li>
-          <li><strong>AWS Academy Graduate:</strong> Cloud Foundations</li>
-          <li><strong>IT Specialist:</strong> Python, Java</li>
-        </ul>
       </section>
 
       <section>
