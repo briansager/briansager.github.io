@@ -107,6 +107,10 @@
     .award a { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden; cursor:zoom-in; background:#fff; }
     .award img { width:100%; display:block; transition:transform .25s ease; }
     .award a:hover img { transform:scale(1.04); }
+    .sec-education, .sec-skills, .sec-certs { display:flex; flex-direction:column; }
+    .sec-education > .card, .sec-skills > .card, .sec-certs > .card { flex:1; }
+    .card > .award { margin-top:14px; }
+    .card ul:first-child { margin-top:0; }
     .award figcaption { font-size:.75rem; color:var(--muted); margin-top:4px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
     .hover-link { position:relative; display:inline-block; }
     .hover-link .preview { position:absolute; left:0; bottom:calc(100% + 10px); width:320px; max-width:80vw; padding:6px; background:var(--card); border:1px solid var(--border); border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,.28); opacity:0; visibility:hidden; transform:translateY(6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; pointer-events:none; z-index:50; }
@@ -176,23 +180,29 @@
 
       <section class="sec-skills">
         <h2>Skills</h2>
-        <ul>
-          <li><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, C++, HTML, CSS, HDL, Assembly</li>
-          <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Tailwind CSS, Git, GitHub, Quartus, AutoCAD</li>
-          <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
-          <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
-          <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
-        </ul>
+        <div class="card">
+          <ul>
+            <li><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, C++, HTML, CSS, HDL, Assembly</li>
+            <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Tailwind CSS, Git, GitHub, Quartus, AutoCAD</li>
+            <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
+            <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
+            <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
+          </ul>
+          <figure class="award"><a href="images/certiport-python.jpg" data-lb><img src="images/certiport-python.jpg" alt="Certiport IT Specialist certificate in Python, awarded March 27, 2025" loading="lazy"></a><figcaption>IT Specialist: Python (Certiport), 2025</figcaption></figure>
+        </div>
       </section>
 
       <section class="sec-certs">
         <h2>Awards and Certifications</h2>
-        <ul>
-          <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
-          <li><strong>Cisco:</strong> Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation; CCST Networking</li>
-          <li><strong>AWS Academy Graduate:</strong> Cloud Foundations</li>
-          <li><strong>IT Specialist:</strong> Python, Java</li>
-        </ul>
+        <div class="card">
+          <ul>
+            <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
+            <li><strong>Cisco:</strong> Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation; CCST Networking</li>
+            <li><strong>AWS Academy Graduate:</strong> Cloud Foundations</li>
+            <li><strong>IT Specialist:</strong> Python, Java</li>
+          </ul>
+          <figure class="award"><a href="images/dean-silver-certificate.jpg" data-lb><img src="images/dean-silver-certificate.jpg" alt="Dean's Silver Certificate for 1st Term, S.Y. 2025-2026, FEU Institute of Technology" loading="lazy"></a><figcaption>Dean’s Silver Certificate, 1st Term</figcaption></figure>
+        </div>
       </section>
 
       <section class="sec-projects">
