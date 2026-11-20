@@ -18,13 +18,14 @@
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:40px 40px; -webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent 95%); mask-image:linear-gradient(to bottom,#000 30%,transparent 95%); }
-    body { font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--fg); max-width:1100px; margin:0 auto; padding:56px 20px; line-height:1.65; }
+    body { font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--fg); max-width:1920px; margin:0 auto; padding:56px clamp(20px,5vw,80px); line-height:1.65; }
     .hero { display:flex; align-items:center; gap:24px; }
-    .avatar { flex:none; width:128px; height:128px; padding:4px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); }
+    .avatar { flex:none; width:clamp(112px,10vw,168px); height:clamp(112px,10vw,168px); padding:4px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); }
     .avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; border:3px solid var(--bg); background:#fff; }
-    @media (max-width:700px) { .hero { flex-direction:column; align-items:flex-start; gap:14px; } .avatar { width:112px; height:112px; } }
-    header { padding:32px 0 8px; max-width:760px; }
-    h1 { margin:0; font-size:clamp(2.2rem,6vw,3.4rem); line-height:1.25; padding-bottom:.1em; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    @media (max-width:700px) { .hero { flex-direction:column; align-items:flex-start; gap:14px; } }
+    header { padding:32px 0 8px; }
+    header > p { max-width:70ch; }
+    h1 { margin:0; font-size:clamp(2.2rem,5vw,4.2rem); line-height:1.25; padding-bottom:.1em; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
     h2 { margin:3.5rem 0 1rem; font-size:1.5rem; letter-spacing:.02em; }
     h2::after { content:""; display:block; width:48px; height:4px; border-radius:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); margin-top:8px; }
     .tagline { color:var(--muted); font-size:1.1rem; margin-top:8px; }
@@ -56,6 +57,22 @@
     .tags span { display:inline-block; background:var(--accent); color:var(--tagfg); border-radius:999px; padding:2px 12px; font-size:.78rem; font-weight:600; margin:4px 6px 4px 0; }
     .meta { color:var(--muted); font-size:.9rem; }
     ul { padding-left:20px; }
+    main { display:grid; grid-template-columns:1fr; column-gap:40px; }
+    main > section { min-width:0; }
+    .projects { display:grid; grid-template-columns:1fr; gap:16px; }
+    .projects .card { margin:0; }
+    @media (min-width:760px) {
+      main { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .sec-certs, .sec-projects { grid-column:1 / -1; }
+      .projects { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .projects .verde { grid-column:1 / -1; }
+    }
+    @media (min-width:1200px) {
+      main { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .sec-certs { grid-column:auto; }
+      .sec-projects { grid-column:1 / -1; }
+      .sec-seminars { grid-column:span 2; }
+    }
     footer { margin-top:4rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:.85rem; }
     .gallery { display:grid; gap:12px; margin:12px 0 4px; }
     .gallery.g4 { grid-template-columns:repeat(4,1fr); }
@@ -82,9 +99,9 @@
     #lb-close { top:16px; right:16px; }
     #lb-prev { left:16px; top:50%; transform:translateY(-50%); }
     #lb-next { right:16px; top:50%; transform:translateY(-50%); }
-    .edu { display:flex; gap:20px; align-items:flex-start; }
-    .edu-text { flex:1; min-width:0; }
-    .award { margin:0; width:220px; flex:none; }
+    .edu { display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; }
+    .edu-text { flex:1 1 240px; min-width:0; }
+    .award { margin:0; width:200px; flex:none; }
     .award a { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden; cursor:zoom-in; background:#fff; }
     .award img { width:100%; display:block; transition:transform .25s ease; }
     .award a:hover img { transform:scale(1.04); }
@@ -139,7 +156,7 @@
 
   <div>
     <main>
-      <section>
+      <section class="sec-education">
         <h2>Education</h2>
         <div class="card edu">
           <div class="edu-text">
@@ -155,7 +172,7 @@
         </div>
       </section>
 
-      <section>
+      <section class="sec-skills">
         <h2>Skills</h2>
         <ul>
           <li><strong>Languages:</strong> Python, Java, JavaScript, C++, HTML, CSS, HDL, Assembly</li>
@@ -166,7 +183,7 @@
         </ul>
       </section>
 
-      <section>
+      <section class="sec-certs">
         <h2>Awards and Certifications</h2>
         <ul>
           <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
@@ -176,10 +193,10 @@
         </ul>
       </section>
 
-      <section>
+      <section class="sec-projects">
         <h2>Projects</h2>
-
-        <div class="card">
+        <div class="projects">
+        <div class="card verde">
           <h3>VERDE: IoT Hydroponics System with Sensor-Vision Fusion</h3>
           <p class="stack">Python, scikit-learn, YOLOv8, OpenCV, Raspberry Pi 5, ADS1115, GSM Module, Tailscale</p>
           <ul>
@@ -224,9 +241,10 @@
           <div class="tags"><span>Wix</span><span>Web Design</span><span>Fan Project</span></div>
           <span class="hover-link"><a href="https://sagerbrian21.wixsite.com/sans" target="_blank" rel="noopener">Visit site</a><span class="preview" aria-hidden="true"><img src="images/sans-preview.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span></span>
         </div>
+        </div>
       </section>
 
-      <section>
+      <section class="sec-seminars">
         <h2>Seminars</h2>
         <ul>
           <li><strong>AI in Network Security:</strong> Organizer, May 2026</li>
@@ -236,7 +254,7 @@
         </ul>
       </section>
 
-      <section>
+      <section class="sec-orgs">
         <h2>Organizations</h2>
         <div class="card">
           <h3>Computer Engineering Organization</h3>
