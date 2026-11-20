@@ -44,8 +44,12 @@
     .qr-card .handle { font-size:.78rem; color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; word-break:break-all; }
     @media (max-width:700px) { .connect-grid { grid-template-columns:1fr; } }
     .layout { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:40px; align-items:start; }
-    .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin:16px 0; transition:transform .2s ease, box-shadow .2s ease; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0; transition:transform .2s ease, box-shadow .2s ease; overflow:hidden; }
     .card:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.12); }
+    
+    /* Text padding inside the card */
+    .card-padded { padding:18px 20px; }
+    
     .card h3 { margin:0 0 6px; }
     .card ul { margin:8px 0; }
     .card li { margin:4px 0; }
@@ -63,6 +67,7 @@
     main > section { min-width:0; }
     .projects { display:grid; grid-template-columns:1fr; gap:16px; }
     .projects .card { margin:0; }
+    
     @media (min-width:760px) {
       main { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .sec-certs, .sec-projects { grid-column:1 / -1; }
@@ -101,26 +106,29 @@
     #lb-close { top:16px; right:16px; }
     #lb-prev { left:16px; top:50%; transform:translateY(-50%); }
     #lb-next { right:16px; top:50%; transform:translateY(-50%); }
-    .edu { display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; }
-    .edu-text { flex:1 1 240px; min-width:0; }
-
-    /* --- FIXED IMAGE SIZES & FILLING --- */
-    .award { margin:0; width:100%; max-width: 220px; flex:none; }
-    .award a { display:block; border:1px solid var(--border); border-radius:10px; overflow:hidden; cursor:zoom-in; background:#fff; aspect-ratio: 4/3; }
-    .award img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
-    .award a:hover img { transform:scale(1.04); }
-
+    
+    .edu { display:flex; flex-direction:column; }
+    .edu-text { flex:1; }
+    
+    /* --- CARD STRUCTURE FOR EQUAL HEIGHTS & FILLED IMAGES --- */
     .sec-education, .sec-skills, .sec-certs { display:flex; flex-direction:column; }
     .sec-education > .card, .sec-skills > .card, .sec-certs > .card { flex:1; display:flex; flex-direction:column; }
-
-    .card > .award { margin-top:auto; padding-top: 14px; }
+    
+    .card-award-wrapper { margin-top: auto; width: 100%; }
+    .award { margin:0; width:100%; display:block; }
+    .award a { display:block; cursor:zoom-in; width: 100%; aspect-ratio: 16/9; }
+    .award img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
+    .award a:hover img { transform:scale(1.04); }
+    
+    .award figcaption { font-size:.75rem; color:var(--muted); margin-top:8px; padding:0 20px 18px 20px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    
     .card ul:first-child { margin-top:0; }
-    .award figcaption { font-size:.75rem; color:var(--muted); margin-top:4px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    
     .hover-link { position:relative; display:inline-block; }
     .hover-link .preview { position:absolute; left:0; bottom:calc(100% + 10px); width:320px; max-width:80vw; padding:6px; background:var(--card); border:1px solid var(--border); border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,.28); opacity:0; visibility:hidden; transform:translateY(6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; pointer-events:none; z-index:50; }
     .hover-link .preview img { width:100%; display:block; border-radius:8px; }
     .hover-link:hover .preview, .hover-link:focus-within .preview { opacity:1; visibility:visible; transform:none; }
-    @media (max-width:700px) { .edu { flex-direction:column; } .award { width:100%; max-width:320px; } }
+    @media (max-width:700px) { .award a { aspect-ratio: 4/3; } }
     @media (max-width:700px) {
       .gallery.g4 { grid-template-columns:repeat(2,1fr); }
       .gallery.g2 { grid-template-columns:1fr; }
@@ -168,8 +176,8 @@
     <main>
       <section class="sec-education">
         <h2>Education</h2>
-        <div class="card edu">
-          <div class="edu-text">
+        <div class="card">
+          <div class="card-padded">
             <h3>BS Computer Engineering</h3>
             <p>FEU Institute of Technology, Philippines<br><span class="meta">Expected graduation: September 2027</span></p>
             <ul>
@@ -178,34 +186,53 @@
               <li>Top Performing Student, School Year 2025-2026 (Annual Students’ Recognition 2026)</li>
             </ul>
           </div>
-          <figure class="award"><a href="images/top-performing-student.jpg" data-lb><img src="images/top-performing-student.jpg" alt="Certificate of Recognition: Top Performing Student, School Year 2025-2026" loading="lazy"></a><figcaption>Certificate of Recognition</figcaption></figure>
+          <div class="card-award-wrapper">
+            <figure class="award">
+              <a href="images/top-performing-student.jpg" data-lb><img src="images/top-performing-student.jpg" alt="Certificate of Recognition: Top Performing Student, School Year 2025-2026" loading="lazy"></a>
+              <figcaption>Certificate of Recognition</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
       <section class="sec-skills">
         <h2>Skills</h2>
         <div class="card">
-          <ul>
-            <li><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, C++, HTML, CSS, HDL, Assembly</li>
-            <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Tailwind CSS, Git, GitHub, Quartus, AutoCAD</li>
-            <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
-            <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
-            <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
-          </ul>
-          <figure class="award"><a href="images/certiport-python.jpg" data-lb><img src="images/certiport-python.jpg" alt="Certiport IT Specialist certificate in Python, awarded March 27, 2025" loading="lazy"></a><figcaption>IT Specialist: Python (Certiport), 2025</figcaption></figure>
+          <div class="card-padded">
+            <ul>
+              <li><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, C++, HTML, CSS, HDL, Assembly</li>
+              <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Tailwind CSS, Git, GitHub, Quartus, AutoCAD</li>
+              <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
+              <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
+              <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
+            </ul>
+          </div>
+          <div class="card-award-wrapper">
+            <figure class="award">
+              <a href="images/certiport-python.jpg" data-lb><img src="images/certiport-python.jpg" alt="Certiport IT Specialist certificate in Python, awarded March 27, 2025" loading="lazy"></a>
+              <figcaption>IT Specialist: Python (Certiport), 2025</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
       <section class="sec-certs">
         <h2>Awards and Certifications</h2>
         <div class="card">
-          <ul>
-            <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
-            <li><strong>Cisco:</strong> Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation; CCST Networking</li>
-            <li><strong>AWS Academy Graduate:</strong> Cloud Foundations</li>
-            <li><strong>IT Specialist:</strong> Python, Java</li>
-          </ul>
-          <figure class="award"><a href="images/dean-silver-certificate.jpg" data-lb><img src="images/dean-silver-certificate.jpg" alt="Dean's Silver Certificate for 1st Term, S.Y. 2025-2026, FEU Institute of Technology" loading="lazy"></a><figcaption>Dean’s Silver Certificate, 1st Term</figcaption></figure>
+          <div class="card-padded">
+            <ul>
+              <li><strong>Dean’s Lister (Silver):</strong> School Year 2025-2026, 1st, 2nd, and 3rd Term</li>
+              <li><strong>Cisco:</strong> Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation; CCST Networking</li>
+              <li><strong>AWS Academy Graduate:</strong> Cloud Foundations</li>
+              <li><strong>IT Specialist:</strong> Python, Java</li>
+            </ul>
+          </div>
+          <div class="card-award-wrapper">
+            <figure class="award">
+              <a href="images/dean-silver-certificate.jpg" data-lb><img src="images/dean-silver-certificate.jpg" alt="Dean's Silver Certificate for 1st Term, S.Y. 2025-2026, FEU Institute of Technology" loading="lazy"></a>
+              <figcaption>Dean’s Silver Certificate, 1st Term</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -213,63 +240,73 @@
         <h2>Projects</h2>
         <div class="projects">
         <div class="card verde">
-          <h3>VERDE: IoT Hydroponics System with Sensor-Vision Fusion</h3>
-          <p class="stack">Python, scikit-learn, YOLOv8, OpenCV, Raspberry Pi 5, ADS1115, GSM Module, Tailscale</p>
-          <ul>
-            <li>Led a 4-member thesis team to deliver a working hydroponics prototype with sensor-vision fusion (20/20 combinations verified, 4.9 s max response vs. a ≤ 5 s target).</li>
-            <li>Trained YOLOv8 (2,200 images, 96.67% mAP@0.5) and a Random Forest classifier (~5,000 sensor readings, 100% 5-fold CV), deployed on a Raspberry Pi 5.</li>
-            <li>Built and wired the full hardware system (sensors, camera, ADS1115, relay-controlled pumps) with soldering and circuit testing, installed Raspberry Pi OS, and taught groupmates Pi 5 remote access.</li>
-          </ul>
-          <p class="sub">Hardware</p>
-          <div class="gallery g4"><figure><a href="images/verde-rack.jpg" data-lb><img src="images/verde-rack.jpg" alt="VERDE Full rack" loading="lazy"></a><figcaption>Full rack</figcaption></figure><figure><a href="images/verde-pi-box.jpg" data-lb><img src="images/verde-pi-box.jpg" alt="VERDE Pi 5 + GSM + relays" loading="lazy"></a><figcaption>Pi 5 + GSM + relays</figcaption></figure><figure><a href="images/verde-sensor-box.jpg" data-lb><img src="images/verde-sensor-box.jpg" alt="VERDE Sensor box" loading="lazy"></a><figcaption>Sensor box</figcaption></figure><figure><a href="images/verde-relay-box.jpg" data-lb><img src="images/verde-relay-box.jpg" alt="VERDE Pump + relay box" loading="lazy"></a><figcaption>Pump + relay box</figcaption></figure></div>
-          <p class="sub">Web dashboard</p>
-          <div class="gallery g2"><figure><a href="images/verde-yolo.jpg" data-lb><img src="images/verde-yolo.jpg" alt="VERDE YOLOv8 detection" loading="lazy"></a><figcaption>YOLOv8 detection</figcaption></figure><figure><a href="images/verde-dashboard.jpg" data-lb><img src="images/verde-dashboard.jpg" alt="VERDE Live readings + RF status" loading="lazy"></a><figcaption>Live readings + RF status</figcaption></figure></div>
-          <div class="gallery g5"><figure><a href="images/verde-ph-crop.jpg" data-lb><img src="images/verde-ph-crop.jpg" alt="VERDE pH trend" loading="lazy"></a><figcaption>pH trend</figcaption></figure><figure><a href="images/verde-ec-crop.jpg" data-lb><img src="images/verde-ec-crop.jpg" alt="VERDE EC trend" loading="lazy"></a><figcaption>EC trend</figcaption></figure><figure><a href="images/verde-turbidity-crop.jpg" data-lb><img src="images/verde-turbidity-crop.jpg" alt="VERDE Turbidity trend" loading="lazy"></a><figcaption>Turbidity trend</figcaption></figure><figure><a href="images/verde-water-temp.jpg" data-lb><img src="images/verde-water-temp.jpg" alt="VERDE Water temp trend" loading="lazy"></a><figcaption>Water temp trend</figcaption></figure><figure><a href="images/verde-humidity.jpg" data-lb><img src="images/verde-humidity.jpg" alt="VERDE Humidity trend" loading="lazy"></a><figcaption>Humidity trend</figcaption></figure></div>
-          <div class="tags"><span>IoT</span><span>Embedded</span><span>YOLOv8</span><span>Random Forest</span><span>Raspberry Pi 5</span></div>
+          <div class="card-padded">
+            <h3>VERDE: IoT Hydroponics System with Sensor-Vision Fusion</h3>
+            <p class="stack">Python, scikit-learn, YOLOv8, OpenCV, Raspberry Pi 5, ADS1115, GSM Module, Tailscale</p>
+            <ul>
+              <li>Led a 4-member thesis team to deliver a working hydroponics prototype with sensor-vision fusion (20/20 combinations verified, 4.9 s max response vs. a ≤ 5 s target).</li>
+              <li>Trained YOLOv8 (2,200 images, 96.67% mAP@0.5) and a Random Forest classifier (~5,000 sensor readings, 100% 5-fold CV), deployed on a Raspberry Pi 5.</li>
+              <li>Built and wired the full hardware system (sensors, camera, ADS1115, relay-controlled pumps) with soldering and circuit testing, installed Raspberry Pi OS, and taught groupmates Pi 5 remote access.</li>
+            </ul>
+            <p class="sub">Hardware</p>
+            <div class="gallery g4"><figure><a href="images/verde-rack.jpg" data-lb><img src="images/verde-rack.jpg" alt="VERDE Full rack" loading="lazy"></a><figcaption>Full rack</figcaption></figure><figure><a href="images/verde-pi-box.jpg" data-lb><img src="images/verde-pi-box.jpg" alt="VERDE Pi 5 + GSM + relays" loading="lazy"></a><figcaption>Pi 5 + GSM + relays</figcaption></figure><figure><a href="images/verde-sensor-box.jpg" data-lb><img src="images/verde-sensor-box.jpg" alt="VERDE Sensor box" loading="lazy"></a><figcaption>Sensor box</figcaption></figure><figure><a href="images/verde-relay-box.jpg" data-lb><img src="images/verde-relay-box.jpg" alt="VERDE Pump + relay box" loading="lazy"></a><figcaption>Pump + relay box</figcaption></figure></div>
+            <p class="sub">Web dashboard</p>
+            <div class="gallery g2"><figure><a href="images/verde-yolo.jpg" data-lb><img src="images/verde-yolo.jpg" alt="VERDE YOLOv8 detection" loading="lazy"></a><figcaption>YOLOv8 detection</figcaption></figure><figure><a href="images/verde-dashboard.jpg" data-lb><img src="images/verde-dashboard.jpg" alt="VERDE Live readings + RF status" loading="lazy"></a><figcaption>Live readings + RF status</figcaption></figure></div>
+            <div class="gallery g5"><figure><a href="images/verde-ph-crop.jpg" data-lb><img src="images/verde-ph-crop.jpg" alt="VERDE pH trend" loading="lazy"></a><figcaption>pH trend</figcaption></figure><figure><a href="images/verde-ec-crop.jpg" data-lb><img src="images/verde-ec-crop.jpg" alt="VERDE EC trend" loading="lazy"></a><figcaption>EC trend</figcaption></figure><figure><a href="images/verde-turbidity-crop.jpg" data-lb><img src="images/verde-turbidity-crop.jpg" alt="VERDE Turbidity trend" loading="lazy"></a><figcaption>Turbidity trend</figcaption></figure><figure><a href="images/verde-water-temp.jpg" data-lb><img src="images/verde-water-temp.jpg" alt="VERDE Water temp trend" loading="lazy"></a><figcaption>Water temp trend</figcaption></figure><figure><a href="images/verde-humidity.jpg" data-lb><img src="images/verde-humidity.jpg" alt="VERDE Humidity trend" loading="lazy"></a><figcaption>Humidity trend</figcaption></figure></div>
+            <div class="tags"><span>IoT</span><span>Embedded</span><span>YOLOv8</span><span>Random Forest</span><span>Raspberry Pi 5</span></div>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Closed-Loop Water Quality Control System for RO Units (pH and TDS)</h3>
-          <p class="stack">Arduino Uno, C++, pH and TDS Sensors, I2C LCD, Relay Control, Soldering</p>
-          <ul>
-            <li>Built and soldered the hardware for a working Arduino system that monitors pH and TDS and automatically runs RO or alkaline filtration until water is within safe limits.</li>
-            <li>Reviewed the Arduino code against the project’s 7 objectives (threshold checks, relay control, recirculation) and designed the containers and materials.</li>
-          </ul>
-          <div class="gallery g3"><figure><a href="images/ro-enclosure.jpg" data-lb><img src="images/ro-enclosure.jpg" alt="Closed-loop water quality controller enclosure with pumps and reservoir" loading="lazy"></a><figcaption>Enclosure, pumps, and reservoir</figcaption></figure><figure><a href="images/ro-electronics.jpg" data-lb><img src="images/ro-electronics.jpg" alt="Inside the controller showing relays, pH and TDS boards, and status LEDs" loading="lazy"></a><figcaption>Relays, pH and TDS boards, status LEDs</figcaption></figure><figure><a href="images/ro-lcd.jpg" data-lb><img src="images/ro-lcd.jpg" alt="Controller LCD showing water quality status" loading="lazy"></a><figcaption>LCD status readout</figcaption></figure></div>
-          <div class="tags"><span>Arduino</span><span>C++</span><span>Sensors</span><span>Hardware</span></div>
+          <div class="card-padded">
+            <h3>Closed-Loop Water Quality Control System for RO Units (pH and TDS)</h3>
+            <p class="stack">Arduino Uno, C++, pH and TDS Sensors, I2C LCD, Relay Control, Soldering</p>
+            <ul>
+              <li>Built and soldered the hardware for a working Arduino system that monitors pH and TDS and automatically runs RO or alkaline filtration until water is within safe limits.</li>
+              <li>Reviewed the Arduino code against the project’s 7 objectives (threshold checks, relay control, recirculation) and designed the containers and materials.</li>
+            </ul>
+            <div class="gallery g3"><figure><a href="images/ro-enclosure.jpg" data-lb><img src="images/ro-enclosure.jpg" alt="Closed-loop water quality controller enclosure with pumps and reservoir" loading="lazy"></a><figcaption>Enclosure, pumps, and reservoir</figcaption></figure><figure><a href="images/ro-electronics.jpg" data-lb><img src="images/ro-electronics.jpg" alt="Inside the controller showing relays, pH and TDS boards, and status LEDs" loading="lazy"></a><figcaption>Relays, pH and TDS boards, status LEDs</figcaption></figure><figure><a href="images/ro-lcd.jpg" data-lb><img src="images/ro-lcd.jpg" alt="Controller LCD showing water quality status" loading="lazy"></a><figcaption>LCD status readout</figcaption></figure></div>
+            <div class="tags"><span>Arduino</span><span>C++</span><span>Sensors</span><span>Hardware</span></div>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Index 0 Student Services Map: Web-Based Student Services Map</h3>
-          <p class="stack">React, Flask (Python), PostgreSQL, Leaflet, Git, GitHub, Flowcharting, Manual QA Testing</p>
-          <ul>
-            <li>Co-developed a web-based student services map, organizing the SQL tables and planning features through a system flowchart.</li>
-            <li>Ran manual QA testing against the project objectives and delivered the full demo.</li>
-          </ul>
-          <div class="gallery g1"><figure><a href="images/index0-map.jpg" data-lb><img src="images/index0-map.jpg" alt="Index 0 Student Services Map dashboard with service directory, map, and details panel" loading="lazy"></a><figcaption>Service directory, map, and details panel</figcaption></figure></div>
-          <div class="tags"><span>React</span><span>Flask</span><span>PostgreSQL</span><span>Leaflet</span></div>
+          <div class="card-padded">
+            <h3>Index 0 Student Services Map: Web-Based Student Services Map</h3>
+            <p class="stack">React, Flask (Python), PostgreSQL, Leaflet, Git, GitHub, Flowcharting, Manual QA Testing</p>
+            <ul>
+              <li>Co-developed a web-based student services map, organizing the SQL tables and planning features through a system flowchart.</li>
+              <li>Ran manual QA testing against the project objectives and delivered the full demo.</li>
+            </ul>
+            <div class="gallery g1"><figure><a href="images/index0-map.jpg" data-lb><img src="images/index0-map.jpg" alt="Index 0 Student Services Map dashboard with service directory, map, and details panel" loading="lazy"></a><figcaption>Service directory, map, and details panel</figcaption></figure></div>
+            <div class="tags"><span>React</span><span>Flask</span><span>PostgreSQL</span><span>Leaflet</span></div>
+          </div>
         </div>
 
         <div class="card">
-          <h3>WuWa Build Tracker: Wuthering Waves Echo Build Scorer</h3>
-          <p class="stack">React, TypeScript, Vite, Tailwind CSS, Tesseract.js, Git, GitHub, Vercel</p>
-          <ul>
-            <li>Built an open-source web app as a solo project that scores five-Echo builds using character-specific stat weights, detects active Sonata set bonuses, and grades each build from S to D.</li>
-            <li>Added in-browser OCR (Tesseract.js) so Echo screenshots are read on the user’s device with no server upload. The parser is still being improved.</li>
-            <li>Designed the data model and a mobile-responsive, game-style dark UI, with automatic deployment from GitHub to Vercel.</li>
-          </ul>
-          <div class="tags"><span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>OCR</span></div>
-          <p class="links">
-            <span class="hover-link"><a href="https://wuthering-waves-build-tracker.vercel.app/" target="_blank" rel="noopener">Live demo</a><span class="preview" aria-hidden="true"><img src="images/wuwa-preview.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span></span>
-            <a href="https://github.com/briansager/wuwa-build-tracker" target="_blank" rel="noopener">Source</a>
-          </p>
+          <div class="card-padded">
+            <h3>WuWa Build Tracker: Wuthering Waves Echo Build Scorer</h3>
+            <p class="stack">React, TypeScript, Vite, Tailwind CSS, Tesseract.js, Git, GitHub, Vercel</p>
+            <ul>
+              <li>Built an open-source web app as a solo project that scores five-Echo builds using character-specific stat weights, detects active Sonata set bonuses, and grades each build from S to D.</li>
+              <li>Added in-browser OCR (Tesseract.js) so Echo screenshots are read on the user’s device with no server upload. The parser is still being improved.</li>
+              <li>Designed the data model and a mobile-responsive, game-style dark UI, with automatic deployment from GitHub to Vercel.</li>
+            </ul>
+            <div class="tags"><span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>OCR</span></div>
+            <p class="links">
+              <span class="hover-link"><a href="https://wuthering-waves-build-tracker.vercel.app/" target="_blank" rel="noopener">Live demo</a><span class="preview" aria-hidden="true"><img src="images/wuwa-preview.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span></span>
+              <a href="https://github.com/briansager/wuwa-build-tracker" target="_blank" rel="noopener">Source</a>
+            </p>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Sans Fan Site (Wix)</h3>
-          <p>A non-commercial fan-made website built in Wix. Designed the layout and page structure. All characters belong to their original creator, and this project is not affiliated with or endorsed by them.</p>
-          <div class="tags"><span>Wix</span><span>Web Design</span><span>Fan Project</span></div>
-          <span class="hover-link"><a href="https://sagerbrian21.wixsite.com/sans" target="_blank" rel="noopener">Visit site</a><span class="preview" aria-hidden="true"><img src="images/sans-preview.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span></span>
+          <div class="card-padded">
+            <h3>Sans Fan Site (Wix)</h3>
+            <p>A non-commercial fan-made website built in Wix. Designed the layout and page structure. All characters belong to their original creator, and this project is not affiliated with or endorsed by them.</p>
+            <div class="tags"><span>Wix</span><span>Web Design</span><span>Fan Project</span></div>
+            <span class="hover-link"><a href="https://sagerbrian21.wixsite.com/sans" target="_blank" rel="noopener">Visit site</a><span class="preview" aria-hidden="true"><img src="images/sans-preview.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span></span>
+          </div>
         </div>
         </div>
       </section>
@@ -287,9 +324,11 @@
       <section class="sec-orgs">
         <h2>Organizations</h2>
         <div class="card">
-          <h3>Computer Engineering Organization</h3>
-          <p>FEU Institute of Technology<br><span class="meta">Member, Sep 2023 to present</span></p>
-          <p>Take part in organization events and activities, including the CpEO: Pioneers of Progress seminar (2025).</p>
+          <div class="card-padded">
+            <h3>Computer Engineering Organization</h3>
+            <p>FEU Institute of Technology<br><span class="meta">Member, Sep 2023 to present</span></p>
+            <p>Take part in organization events and activities, including the CpEO: Pioneers of Progress seminar (2025).</p>
+          </div>
         </div>
       </section>
     </main>
