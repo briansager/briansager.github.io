@@ -56,6 +56,8 @@
     .poster { width:100%; height:auto; border-radius:8px; margin-top:8px; display:block; }
     .tags span { display:inline-block; background:var(--accent); color:var(--tagfg); border-radius:999px; padding:2px 12px; font-size:.78rem; font-weight:600; margin:4px 6px 4px 0; }
     .meta { color:var(--muted); font-size:.9rem; }
+    .links { margin:8px 0 0; }
+    .links > a, .links .hover-link { margin-right:14px; }
     ul { padding-left:20px; }
     main { display:grid; grid-template-columns:1fr; column-gap:40px; }
     main > section { min-width:0; }
@@ -175,8 +177,8 @@
       <section class="sec-skills">
         <h2>Skills</h2>
         <ul>
-          <li><strong>Languages:</strong> Python, Java, JavaScript, C++, HTML, CSS, HDL, Assembly</li>
-          <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Git, GitHub, Quartus, AutoCAD</li>
+          <li><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, C++, HTML, CSS, HDL, Assembly</li>
+          <li><strong>Frameworks and libraries:</strong> React, Flask, PyTorch, Tailwind CSS, Git, GitHub, Quartus, AutoCAD</li>
           <li><strong>Embedded systems and IoT:</strong> Raspberry Pi, Arduino, ESP, PCB and CAD design, 3D modeling</li>
           <li><strong>Other tools:</strong> SQL, Cisco CCNA, AWS Cloud Foundations, YOLOv8, OpenCV, Random Forest</li>
           <li><strong>Soft skills:</strong> Leadership, collaboration, problem solving, adaptability, time management</li>
@@ -234,6 +236,20 @@
           <div class="tags"><span>React</span><span>Flask</span><span>PostgreSQL</span><span>Leaflet</span></div>
         </div>
 
+        <div class="card">
+          <h3>WuWa Build Tracker: Wuthering Waves Echo Build Scorer</h3>
+          <p class="stack">React, TypeScript, Vite, Tailwind CSS, Tesseract.js, Git, GitHub, Vercel</p>
+          <ul>
+            <li>Built an open-source web app as a solo project that scores five-Echo builds using character-specific stat weights, detects active Sonata set bonuses, and grades each build from S to D.</li>
+            <li>Added in-browser OCR (Tesseract.js) so Echo screenshots are read on the user’s device with no server upload. The parser is still being improved.</li>
+            <li>Designed the data model and a mobile-responsive, game-style dark UI, with automatic deployment from GitHub to Vercel.</li>
+          </ul>
+          <div class="tags"><span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>OCR</span></div>
+          <p class="links">
+            <span class="hover-link"><a href="https://wuthering-waves-build-tracker.vercel.app/" target="_blank" rel="noopener">Live demo</a><span class="preview" aria-hidden="true"><img src="images/wuwa-preview.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span></span>
+            <a href="https://github.com/briansager/wuwa-build-tracker" target="_blank" rel="noopener">Source</a>
+          </p>
+        </div>
 
         <div class="card">
           <h3>Sans Fan Site (Wix)</h3>
