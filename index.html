@@ -34,7 +34,11 @@
     header p a { display:inline-block; border:1px solid var(--border); border-radius:999px; padding:4px 14px; margin:4px 6px 4px 0; }
     header p a:hover { background:var(--card); text-decoration:none; }
     header p a { display:inline-flex; align-items:center; gap:8px; }
-    .link-sep { display:inline-block; width:1px; height:22px; background:var(--border); margin:0 10px 0 4px; vertical-align:middle; }
+    header > p.header-links { max-width:100%; width:fit-content; display:flex; flex-wrap:wrap; align-items:center; gap:10px; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px 18px; margin-top:20px; }
+    .header-links::before { content:"Links"; flex:0 0 100%; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+    .header-links a { margin:0; background:var(--bg); }
+    .header-links a:hover { background:var(--bg); border-color:var(--accent); }
+    .link-sep { display:inline-block; width:1px; height:22px; background:var(--border); margin:0 4px; }
     @media (max-width:700px) { .link-sep { display:none; } }
     .ico { flex:none; }
     .connect-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
