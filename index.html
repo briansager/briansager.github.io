@@ -5,22 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Brian James S. Sager — Computer Engineering student building embedded systems, edge AI, and software projects.">
 <title>Brian James Sager | Engineering Portfolio</title>
+<link rel="icon" type="image/png" href="portfolio-logo.png">
 <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
 :root{color-scheme:dark;--bg:#080909;--panel:#111111;--panel2:#191816;--text:#f4f1e8;--muted:#aaa69a;--line:#343128;--accent:#e8d57a;--accent2:#fff0a6;--grid:rgba(229,203,91,.055)}
 :root[data-theme="light"]{color-scheme:light;--bg:#f4f2e9;--panel:#fffefa;--panel2:#ece8dc;--text:#171610;--muted:#625f54;--line:#d6d0bf;--accent:#a48720;--accent2:#d6b84b;--grid:rgba(164,135,32,.07)}
-body:after{content:"";position:fixed;inset:-30%;pointer-events:none;z-index:-2;background:radial-gradient(circle at 18% 35%,rgba(223,195,75,.12),transparent 26%),radial-gradient(circle at 80% 68%,rgba(223,195,75,.07),transparent 30%);animation:ambient 14s ease-in-out infinite alternate}
+body:after{content:"";position:absolute;inset:-30% 0;pointer-events:none;z-index:-2;background:radial-gradient(circle at 18% 35%,rgba(223,195,75,.12),transparent 26%),radial-gradient(circle at 80% 68%,rgba(223,195,75,.07),transparent 30%);animation:ambient 14s ease-in-out infinite alternate}
 @keyframes gridDrift{0%{background-position:0 0}100%{background-position:48px 96px}}
 @keyframes ambient{from{transform:translate(-1%,0);opacity:.65}to{transform:translate(1%,2%);opacity:1}}
 @keyframes tilePulse{0%,100%{opacity:.15;box-shadow:0 0 0 rgba(232,213,122,0)}50%{opacity:.55;box-shadow:0 0 16px rgba(232,213,122,.13)}}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Rajdhani,Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000 0%,transparent 92%);animation:gridDrift 24s linear infinite}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{position:relative;isolation:isolate;overflow-x:hidden;margin:0;background:var(--bg);color:var(--text);font-family:Rajdhani,Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+body:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000 0%,transparent 92%);animation:gridDrift 24s linear infinite}
 .wrap{max-width:1320px;margin:auto;padding:30px clamp(18px,4vw,56px) 70px}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 button{font:inherit}#theme-toggle{position:fixed;top:16px;right:16px;z-index:10;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
-nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0 38px;border-bottom:1px solid var(--line);font:12px "Share Tech Mono",ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}
-.navlinks{display:flex;gap:20px;flex-wrap:wrap}nav a{color:var(--muted)}nav .brand{color:var(--accent);font-weight:700;font-family:"Share Tech Mono",monospace}
+nav{position:sticky;top:0;z-index:9;display:flex;align-items:center;justify-content:space-between;padding:12px 0 18px;margin-bottom:20px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);border-bottom:1px solid var(--line);font:12px "Share Tech Mono",ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}
+.navlinks{display:flex;gap:20px;flex-wrap:wrap}nav a{color:var(--muted)}nav .brand{color:var(--accent);font-weight:700;font-family:"Share Tech Mono",monospace;display:inline-flex;align-items:center;gap:10px}nav .brand img{width:32px;height:32px;object-fit:contain}nav .navlinks a{transition:color .2s}nav .navlinks a.active{color:var(--accent)}
 .hero{padding:72px 0 38px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(250px,.7fr);gap:45px;align-items:center}
 .eyebrow,.kicker{font:12px "Share Tech Mono",ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 h1{font-family:Rajdhani,sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(42px,7vw,82px);letter-spacing:-.055em;line-height:1.03;margin:14px 0 20px;font-weight:750}h1 span{color:var(--accent)}
@@ -51,9 +52,16 @@ details.design{margin-top:35px;border-top:1px solid var(--line);padding-top:18px
 .cta.primary{box-shadow:0 0 18px rgba(232,213,122,.13)}
 .card,.panel,.feature,.project,.skill{position:relative}
 .panel:before,.project:before,.skill:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(125deg,rgba(232,213,122,.035),transparent 42%);opacity:.75}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
-.profile-photo{display:block;width:124px;height:124px;object-fit:cover;object-position:center;border-radius:50%;border:2px solid var(--accent);margin:0 0 22px;box-shadow:0 0 20px rgba(232,213,122,.12)}
+/* Scroll progress, reveal motion, and polished navigation */
+#scroll-progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--accent);z-index:100;box-shadow:0 0 10px rgba(232,213,122,.3)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+.cta,.panel,.feature,.skill,.stat{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.cta:hover{transform:translateY(-2px);border-color:var(--accent)}
+nav{scroll-margin-top:20px}
+
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+.profile-photo{display:block;width:165px;height:165px;object-fit:cover;object-position:center;border-radius:50%;border:2px solid var(--accent);margin:0 0 22px;box-shadow:0 0 24px rgba(232,213,122,.16);transition:transform .3s,box-shadow .3s}.profile-photo:hover{transform:scale(1.035);box-shadow:0 0 30px rgba(232,213,122,.24)}
 .education-panel{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);gap:28px;align-items:center}.recognition-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:0}.recognition-grid figure{margin:0;min-width:0}.recognition-grid img{width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px}.recognition-grid figcaption{margin-top:8px;text-align:center;line-height:1.4}
 @media(max-width:900px){.education-panel{grid-template-columns:1fr}.recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:500px){.recognition-grid{grid-template-columns:1fr}}
 
@@ -61,8 +69,9 @@ details.design{margin-top:35px;border-top:1px solid var(--line);padding-top:18px
 </head>
 <body>
 <button id="theme-toggle" type="button" aria-label="Toggle theme">◐ Theme</button>
+<div id="top"></div><div id="scroll-progress" aria-hidden="true"></div>
 <div class="wrap">
-<nav><a class="brand" href="#">Brian James S. Sager / Portfolio</a><div class="navlinks"><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a></div></nav>
+<nav><a class="brand" href="#top"><img src="portfolio-logo.png" alt="">Brian James S. Sager / Portfolio</a><div class="navlinks"><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a></div></nav>
 <header class="hero">
 <div>
 <div class="eyebrow">Computer Engineering · FEU Tech · Class of 2027</div>
@@ -183,5 +192,17 @@ details.design{margin-top:35px;border-top:1px solid var(--line);padding-top:18px
 <script>
 (function(){const links=[...document.querySelectorAll('a[data-lb]')],box=document.getElementById('lightbox'),img=document.getElementById('lb-img');let i=0;if(!box.showModal)return;function show(n){i=(n+links.length)%links.length;img.src=links[i].href;img.alt=links[i].querySelector('img').alt}function hide(){if(box.open)box.close()}links.forEach((a,n)=>a.addEventListener('click',e=>{if(e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;show(n);box.showModal();e.preventDefault()}));document.getElementById('lb-close').onclick=hide;document.getElementById('lb-prev').onclick=()=>show(i-1);document.getElementById('lb-next').onclick=()=>show(i+1);box.addEventListener('click',e=>{if(e.target===box)hide()});box.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)})})();
 (function(){const root=document.documentElement,btn=document.getElementById('theme-toggle');btn.onclick=()=>{const t=root.dataset.theme==='light'?'dark':'light';root.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){};btn.textContent=t==='light'?'◐ Dark mode':'◐ Light mode'};btn.textContent=root.dataset.theme==='light'?'◐ Dark mode':'◐ Light mode'})();
+
+(function(){
+ const progress=document.getElementById('scroll-progress');
+ function updateProgress(){const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?window.scrollY/max*100:0)+'%'}
+ window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
+ const targets=document.querySelectorAll('.section-head,.feature,.projects>.card,.panel,.skill,.contact,.stats,.education-panel,.gallery,details.design');
+ targets.forEach(el=>el.classList.add('reveal'));
+ if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});targets.forEach(el=>observer.observe(el));}else targets.forEach(el=>el.classList.add('visible'));
+ const sections=[...document.querySelectorAll('section[id]')],navLinks=[...document.querySelectorAll('.navlinks a')];
+ if('IntersectionObserver' in window){const navObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(link=>link.classList.toggle('active',link.hash==='#'+entry.target.id));}}),{rootMargin:'-25% 0px -65% 0px'});sections.forEach(section=>navObserver.observe(section));}
+})();
+
 </script>
 </body></html>
